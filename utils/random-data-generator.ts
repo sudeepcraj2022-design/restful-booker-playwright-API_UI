@@ -15,5 +15,6 @@ static getRandomCity = () => faker.location.city();
 static getRandomPin = () => faker.location.zipCode();
 static getRandomStreetAddress = () => faker.location.streetAddress();
 static getRandomUUID = () => faker.string.uuid();
+static getRandomNumber = () => faker.number.int({min: 1, max: 1000});
 
 }
