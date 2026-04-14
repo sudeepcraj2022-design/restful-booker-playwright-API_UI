@@ -1,11 +1,12 @@
 import { test, expect } from '@fixtures/api/request-context';
-import { createBookingPayload } from '@utils/helpers/booking-factory'
+import { createBookingPayload} from '@utils/helpers/payload-factory'
 import { ENDPOINTS } from '@constants/endpoints';
 import { STATUS } from '@constants/status-codes';
 import { BookingResponseSchema } from '@utils/schemas/booking-schemas'
 
 
-test.describe('@smomke - Booking validation', () => {
+
+test.describe('@smoke - Booking validation', () => {
 
     test('TC009 - Create booking with all valid fields', async ({ apiContext, authToken }) => {
         const payload = createBookingPayload();
@@ -16,6 +17,7 @@ test.describe('@smomke - Booking validation', () => {
         });
 
         const body = await response.json();
+        console.log('Response Body', body)
 
         //Status
         expect(response.status()).toBe(STATUS.CREATED);
@@ -39,5 +41,22 @@ test.describe('@smomke - Booking validation', () => {
 
     });
 
+    test('TC010 Create booking with only required fields', async ({ apiContext, authToken }) => {
+    const payload = createBookingPayload();
+
+    const response = await apiContext.post(ENDPOINTS.BOOKING, {
+        headers: { Cookie: `token=${authToken}` },
+        data: payload,
+    });
+
+    const body = await response.json();
+
+    expect(response.status()).toBe(STATUS.CREATED);
+    expect(body.bookingid).toBeDefined();
+    expect(typeof body.bookingid).toBe('number');
+})
 
 });
+
+
+
