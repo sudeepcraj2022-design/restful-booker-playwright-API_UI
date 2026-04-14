@@ -24,6 +24,9 @@
       "@constants/*": [
         "constants/*"
       ],
+      "@test-data/*": [
+        "test-data/*"
+      ],
       "@tests/*": [
         "tests/*"
       ]
@@ -39,6 +42,7 @@
     "pages",
     "fixtures",
     "utils",
+    "test-data",
     "config",
     "constants",
     "playwright.config.ts"
