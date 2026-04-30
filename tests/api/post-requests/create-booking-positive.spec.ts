@@ -54,6 +54,7 @@ test.describe('@smoke - Booking validation', () => {
     expect(response.status()).toBe(STATUS.CREATED);
     expect(body.bookingid).toBeDefined();
     expect(typeof body.bookingid).toBe('number');
+    console.log('hello');
 })
 
 });

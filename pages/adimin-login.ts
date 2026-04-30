@@ -6,6 +6,7 @@ export class LoginPage extends BasePage {
     private readonly usernameField: Locator;
     private readonly passwordField: Locator;
     private readonly loginButton: Locator;
+    private readonly errorMessage: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -13,6 +14,7 @@ export class LoginPage extends BasePage {
         this.usernameField = page.getByLabel('username');
         this.passwordField = page.getByLabel('password');
         this.loginButton = page.getByRole('button', {name: 'Login'});
+        this.errorMessage = page.locator('.alert-danger')
     }
 
     //Navigation method
@@ -31,6 +33,14 @@ export class LoginPage extends BasePage {
     //Getter methods
     getLoginHeading () {
         return this.loginHeading;
+    }
+
+    getPasswordField() {
+        return this.passwordField;
+    }
+
+    getErrorMessage(){
+        return this.errorMessage;
     }
 
 
